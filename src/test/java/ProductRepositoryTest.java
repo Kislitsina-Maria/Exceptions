@@ -42,5 +42,17 @@ public class ProductRepositoryTest {
         });
     }
 
+    @Test
+    public void addExistIdItems() {
+        repository.save(product1);
+        repository.save(product2);
+        repository.save(product3);
+
+        Assertions.assertThrows(AlreadyExistsException.class, () -> {
+            repository.save(product1);
+        });
+    }
+
+
 
 }
