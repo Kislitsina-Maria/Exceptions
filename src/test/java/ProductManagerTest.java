@@ -18,7 +18,9 @@ public class ProductManagerTest {
 
        @Test
        public void shouldReverseAllItems() {
-            PurchaseItem[] expected = {product3, product2, product1};
+           PurchaseItem[] items = { product1, product2, product3};
+           doReturn(items).when(repo).getItems();
+           PurchaseItem[] expected = {product3, product2, product1};
             PurchaseItem[] actual = manager.getItems();
 
             Assertions.assertArrayEquals(expected, actual);
